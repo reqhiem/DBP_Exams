@@ -9,14 +9,17 @@ $(document).ready(function(){
 		
 		$.ajax({
 			url: serviceURL,
-			method: 'put',
-			//headers: {"X-HTTP-Method-Override": "PUT"},
-			data: contenido,
+			type: 'put',
+			headers: {"X-HTTP-Method-Override": "PUT"},
+			contentType : "application/json",
+			data: JSON.stringify(contenido),
+			dataType : 'json',
+			
 			success: function(){
-				console.log("Woo!");
+				console.log("Category saved correctly!");
 			},
 			error: function(){
-				debugger;
+				console.log("Error saving category! :(");
 			}
 		}).then(function(data){
 			console.log(data);
